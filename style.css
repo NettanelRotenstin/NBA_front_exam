@@ -73,3 +73,22 @@ form *{
     width: 80%;
     left: 40px;
 }
+
+table{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+   width: 299%;
+}
+
+th{   
+    position: relative; 
+    justify-content: space-around;
+    left: 40%;
+    padding: 40px;
+    color: azure;
+    background-color: #f82929;
+}
+
+ 

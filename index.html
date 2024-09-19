@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="basketball.js" defer></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="upup">NBA FANTASY 2014-2024</div>
+    <div class="updown">My Fantasy Team</div>
+    <div class="players">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div class="updown">NBA Player Search</div>
+    <div class="search">
+        <form action=""><label for="fname">First name:</label><br>
+            <select name="position" id="position">
+                <option value="pg">PG</option>
+                <option value="sg">SG</option>
+                <option value="sf">SF</option>
+                <option value="pf">PF</option>
+                <option value="c">C</option>
+            </select><br>
+            <input type="range" min="0" max="20000" id="points" name="points" value="points"><br>
+            <input type="range" min="0" max="100" id="per2" name="per2" value="per2"><br>
+            <input type="range" min="0" max="100" id="per3" name="per3" value="per3"><br>
+            <input type="submit" value="Submit" placeholder="Search Player">
+        </form>
+    </div>
+    <div class="tablediv">
+        <table>
+            <tr>
+                <th>Player</th>
+                <th>Position</th>
+                <th>Points</th>
+                <th>FG%</th>
+                <th>3P%</th>
+                <th>Action</th>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>

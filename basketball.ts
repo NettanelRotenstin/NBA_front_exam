@@ -182,7 +182,7 @@ const fillMyTeam = (myNewTeam: Player[]): void => {
         switch (P.position) {
             case `C`: {
                 if (cPickDivs) {
-                    cPickDivs.remove()
+                    cPickDivs.innerHTML = ``
                 }
                 const divName: HTMLDivElement = document.createElement(`div`)!
 
@@ -205,7 +205,7 @@ const fillMyTeam = (myNewTeam: Player[]): void => {
             }break
             case `PG`: {
                 if (pgPickDivs) {
-                    pgPickDivs.remove()
+                    pgPickDivs.innerHTML = ``
                 }
                 console.log(`pg`)
                 const divName: HTMLDivElement = document.createElement(`div`)!
@@ -230,7 +230,7 @@ const fillMyTeam = (myNewTeam: Player[]): void => {
 
             case `SG`: {
                 if (sgPickDivs) {
-                    sgPickDivs.remove()
+                    sgPickDivs.innerHTML = ``
                 }
                 const divName: HTMLDivElement = document.createElement(`div`)!
 
@@ -254,7 +254,7 @@ const fillMyTeam = (myNewTeam: Player[]): void => {
             case `SF`: {
 
                 if (sfPickDivs) {
-                    sfPickDivs.remove()
+                    sfPickDivs.innerHTML = ``
                 }
                 const divName: HTMLDivElement = document.createElement(`div`)!
 
@@ -278,7 +278,7 @@ const fillMyTeam = (myNewTeam: Player[]): void => {
 
             case `PF`: {
                 if (pfPickDivs) {
-                    pfPickDivs.remove()
+                    pfPickDivs.innerHTML = ``
                 }
                 const divName: HTMLDivElement = document.createElement(`div`)!
 

@@ -105,7 +105,7 @@ const fillMyTeam = (myNewTeam) => {
             case `C`:
                 {
                     if (cPickDivs) {
-                        cPickDivs.remove();
+                        cPickDivs.innerHTML = ``;
                     }
                     const divName = document.createElement(`div`);
                     const div3Per = document.createElement(`div`);
@@ -121,7 +121,7 @@ const fillMyTeam = (myNewTeam) => {
             case `PG`:
                 {
                     if (pgPickDivs) {
-                        pgPickDivs.remove();
+                        pgPickDivs.innerHTML = ``;
                     }
                     console.log(`pg`);
                     const divName = document.createElement(`div`);
@@ -138,7 +138,7 @@ const fillMyTeam = (myNewTeam) => {
             case `SG`:
                 {
                     if (sgPickDivs) {
-                        sgPickDivs.remove();
+                        sgPickDivs.innerHTML = ``;
                     }
                     const divName = document.createElement(`div`);
                     const div3Per = document.createElement(`div`);
@@ -154,7 +154,7 @@ const fillMyTeam = (myNewTeam) => {
             case `SF`:
                 {
                     if (sfPickDivs) {
-                        sfPickDivs.remove();
+                        sfPickDivs.innerHTML = ``;
                     }
                     const divName = document.createElement(`div`);
                     const div3Per = document.createElement(`div`);
@@ -170,7 +170,7 @@ const fillMyTeam = (myNewTeam) => {
             case `PF`:
                 {
                     if (pfPickDivs) {
-                        pfPickDivs.remove();
+                        pfPickDivs.innerHTML = ``;
                     }
                     const divName = document.createElement(`div`);
                     const div3Per = document.createElement(`div`);

@@ -12,25 +12,25 @@ interface Player {
 
 //selectors for my team
 
-const cPick: HTMLDivElement = document.querySelector(`.c`)!
+const cPick: HTMLDivElement = document.querySelector(`.C`)!
 
-const pgPick: HTMLDivElement = document.querySelector(`.pg`)!
+const pgPick: HTMLDivElement = document.querySelector(`.PG`)!
 
-const sgPick: HTMLDivElement = document.querySelector(`.sg`)!
+const sgPick: HTMLDivElement = document.querySelector(`.SG`)!
 
-const sfPick: HTMLDivElement = document.querySelector(`.sf`)!
+const sfPick: HTMLDivElement = document.querySelector(`.SF`)!
 
-const pfPick: HTMLDivElement = document.querySelector(`.pf`)!
+const pfPick: HTMLDivElement = document.querySelector(`.PF`)!
 
-const cPickDivs: HTMLDivElement = document.querySelector(`.c div`)!
+const cPickDivs: HTMLDivElement = document.querySelector(`.C *`)!
 
-const pgPickDivs: HTMLDivElement = document.querySelector(`.pg div`)!
+const pgPickDivs: HTMLDivElement = document.querySelector(`.PG *`)!
 
-const sgPickDivs: HTMLDivElement = document.querySelector(`.sg div`)!
+const sgPickDivs: HTMLDivElement = document.querySelector(`.SG *`)!
 
-const sfPickDivs: HTMLDivElement = document.querySelector(`.sf div`)!
+const sfPickDivs: HTMLDivElement = document.querySelector(`.SF *`)!
 
-const pfPickDivs: HTMLDivElement = document.querySelector(`.pf div`)!
+const pfPickDivs: HTMLDivElement = document.querySelector(`.PF *`)!
 //selector table
 
 const tableSel: HTMLTableElement = document.querySelector(`table`)!
@@ -58,9 +58,14 @@ const BASE_URL: string = ` https://nbaserver-q21u.onrender.com/api/filter`
 const myTeam: Player[] = []
 
 
+const spanPoints: HTMLSpanElement = document.querySelector(`.pntspan`)!
+
+const spanTwo: HTMLSpanElement = document.querySelector(`.twospan`)!
+
+const spanThree: HTMLSpanElement = document.querySelector(`.threespan`)!
 
 
-
+const tdSel: HTMLElement = document.querySelector(`td`)!
 
 //function return player object for api from input
 
@@ -73,7 +78,6 @@ const createPlayerObject = (): Player => {
     }
     return playerToSearch
 }
- 
 
 
 
@@ -95,7 +99,7 @@ const callAPI = async (): Promise<void> => {
             )
 
         })
-
+        console.log(playerObject)
         const relevantPlayers: Player[] = await res.json()
 
         await fillTheTable(relevantPlayers)
@@ -111,6 +115,11 @@ const callAPI = async (): Promise<void> => {
 //function thats fill the table
 
 const fillTheTable = (arreyOfPlayers: Player[]): void => {
+    
+    while (tableSel.rows.length > 1) {
+        tableSel.deleteRow(1); 
+    }
+
 
     for (let i = 0; i < arreyOfPlayers.length; i++) {
 
@@ -143,7 +152,11 @@ const fillTheTable = (arreyOfPlayers: Player[]): void => {
 
         const btnAddToTeam: HTMLButtonElement = document.createElement(`button`)
 
+        
+
         btnAddToTeam.classList.add(`btnAddToTeam`)
+
+        btnAddToTeam.textContent = `add ${arreyOfPlayers[i].playerName} to carrent team`
 
         tdAddToAdd.appendChild(btnAddToTeam)
 
@@ -152,53 +165,32 @@ const fillTheTable = (arreyOfPlayers: Player[]): void => {
         tableSel.appendChild(trToAdd)
 
         btnAddToTeam.addEventListener(`click`, (): void => {
-            myTeam.filter(p => p.position !== arreyOfPlayers[i].position)
-            myTeam.push(arreyOfPlayers[i])
-             
-            fillMyTeam(myTeam)
+            const myNewTeam = myTeam.filter(p => p.position !== arreyOfPlayers[i].position)
+            myNewTeam.push(arreyOfPlayers[i])
+
+            fillMyTeam(myNewTeam)
 
         })
 
     }
 }
+ 
 
 
+const fillMyTeam = (myNewTeam: Player[]): void => {
+    myNewTeam.forEach(P => {
+        switch (P.position) {
+            case `C`: {
+                if (cPickDivs) {
+                    cPickDivs.remove()
+                }
+                const divName: HTMLDivElement = document.createElement(`div`)!
 
-const fillMyTeam = (myTeam: Player[]): void => {
-    myTeam.forEach(P => {
-        switch(P.position){
-            case `c`:{
-                cPickDivs.innerHTML = ``
+                const div3Per: HTMLDivElement = document.createElement(`div`)!
 
-                const divName:HTMLDivElement = document.createElement(`div`)!
+                const div2Per: HTMLDivElement = document.createElement(`div`)!
 
-                const div3Per:HTMLDivElement = document.createElement(`div`)!
-
-                const div2Per:HTMLDivElement = document.createElement(`div`)!
-
-                const divPoints:HTMLDivElement = document.createElement(`div`)!
-
-                divName.textContent = `${P.playerName}`
-
-                div3Per.innerText = `Three Percent : ${P.threePercent}%`
-
-                div2Per.innerHTML = `Two Percent : ${P.twoPercent}`
-
-                divPoints.innerText = `Points : ${P.points}`
-
-                cPick.append(divName,div3Per,div2Per,divPoints)
-
-            }
-            case `pg`:{
-                pgPickDivs.innerHTML = ``
-
-                const divName:HTMLDivElement = document.createElement(`div`)!
-
-                const div3Per:HTMLDivElement = document.createElement(`div`)!
-
-                const div2Per:HTMLDivElement = document.createElement(`div`)!
-
-                const divPoints:HTMLDivElement = document.createElement(`div`)!
+                const divPoints: HTMLDivElement = document.createElement(`div`)!
 
                 divName.textContent = `${P.playerName}`
 
@@ -208,42 +200,21 @@ const fillMyTeam = (myTeam: Player[]): void => {
 
                 divPoints.innerText = `Points : ${P.points}`
 
-                pgPick.append(divName,div3Per,div2Per,divPoints)
+                cPick.append(divName, div3Per, div2Per, divPoints)
 
-            }
+            }break
+            case `PG`: {
+                if (pgPickDivs) {
+                    pgPickDivs.remove()
+                }
+                console.log(`pg`)
+                const divName: HTMLDivElement = document.createElement(`div`)!
 
-            case `sg`:{
-                sgPickDivs.innerHTML = ``
+                const div3Per: HTMLDivElement = document.createElement(`div`)!
 
-                const divName:HTMLDivElement = document.createElement(`div`)!
+                const div2Per: HTMLDivElement = document.createElement(`div`)!
 
-                const div3Per:HTMLDivElement = document.createElement(`div`)!
-
-                const div2Per:HTMLDivElement = document.createElement(`div`)!
-
-                const divPoints:HTMLDivElement = document.createElement(`div`)!
-
-                divName.textContent = `${P.playerName}`
-
-                div3Per.innerText = `Three Percent : ${P.threePercent}%`
-
-                div2Per.innerHTML = `Two Percent : ${P.twoPercent}`
-
-                divPoints.innerText = `Points : ${P.points}`
-
-                sgPick.append(divName,div3Per,div2Per,divPoints)
-
-            }
-            case `sf`:{
-                sfPickDivs.innerHTML = ``
-
-                const divName:HTMLDivElement = document.createElement(`div`)!
-
-                const div3Per:HTMLDivElement = document.createElement(`div`)!
-
-                const div2Per:HTMLDivElement = document.createElement(`div`)!
-
-                const divPoints:HTMLDivElement = document.createElement(`div`)!
+                const divPoints: HTMLDivElement = document.createElement(`div`)!
 
                 divName.textContent = `${P.playerName}`
 
@@ -253,20 +224,21 @@ const fillMyTeam = (myTeam: Player[]): void => {
 
                 divPoints.innerText = `Points : ${P.points}`
 
-                sfPick.append(divName,div3Per,div2Per,divPoints)
+                pgPick.append(divName, div3Per, div2Per, divPoints)
 
-            }
+            }break
 
-            case `pf`:{
-                pfPickDivs.innerHTML = ``
+            case `SG`: {
+                if (sgPickDivs) {
+                    sgPickDivs.remove()
+                }
+                const divName: HTMLDivElement = document.createElement(`div`)!
 
-                const divName:HTMLDivElement = document.createElement(`div`)!
+                const div3Per: HTMLDivElement = document.createElement(`div`)!
 
-                const div3Per:HTMLDivElement = document.createElement(`div`)!
+                const div2Per: HTMLDivElement = document.createElement(`div`)!
 
-                const div2Per:HTMLDivElement = document.createElement(`div`)!
-
-                const divPoints:HTMLDivElement = document.createElement(`div`)!
+                const divPoints: HTMLDivElement = document.createElement(`div`)!
 
                 divName.textContent = `${P.playerName}`
 
@@ -276,19 +248,81 @@ const fillMyTeam = (myTeam: Player[]): void => {
 
                 divPoints.innerText = `Points : ${P.points}`
 
-                pfPick.append(divName,div3Per,div2Per,divPoints)
+                sgPick.append(divName, div3Per, div2Per, divPoints)
 
-            }
+            }break
+            case `SF`: {
+
+                if (sfPickDivs) {
+                    sfPickDivs.remove()
+                }
+                const divName: HTMLDivElement = document.createElement(`div`)!
+
+                const div3Per: HTMLDivElement = document.createElement(`div`)!
+
+                const div2Per: HTMLDivElement = document.createElement(`div`)!
+
+                const divPoints: HTMLDivElement = document.createElement(`div`)!
+
+                divName.textContent = `${P.playerName}`
+
+                div3Per.innerText = `Three Percent : ${P.threePercent}%`
+
+                div2Per.innerHTML = `Two Percent : ${P.twoPercent}`
+
+                divPoints.innerText = `Points : ${P.points}`
+
+                sfPick.append(divName, div3Per, div2Per, divPoints)
+
+            }break
+
+            case `PF`: {
+                if (pfPickDivs) {
+                    pfPickDivs.remove()
+                }
+                const divName: HTMLDivElement = document.createElement(`div`)!
+
+                const div3Per: HTMLDivElement = document.createElement(`div`)!
+
+                const div2Per: HTMLDivElement = document.createElement(`div`)!
+
+                const divPoints: HTMLDivElement = document.createElement(`div`)!
+
+                divName.textContent = `${P.playerName}`
+
+                div3Per.innerText = `Three Percent : ${P.threePercent}%`
+
+                div2Per.innerHTML = `Two Percent : ${P.twoPercent}`
+
+                divPoints.innerText = `Points : ${P.points}`
+
+                pfPick.append(divName, div3Per, div2Per, divPoints)
+
+            }break
 
 
         }
     });
 }
 
- 
+
 
 
 
 btnSearch.addEventListener(`click`, callAPI)
 
 
+pntSel.addEventListener(`change`, () => {
+    spanPoints.textContent = pntSel.value
+    spanPoints.style.display = `flex`
+})
+
+twoSel.addEventListener(`change`, () => {
+    spanTwo.style.display = `flex`
+    spanTwo.textContent = twoSel.value
+})
+
+threeSel.addEventListener(`change`, () => {
+    spanThree.style.display = `flex`
+    spanThree.textContent = threeSel.value
+})

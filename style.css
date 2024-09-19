@@ -28,6 +28,7 @@ body{
     display: flex;
     justify-content: center;
      
+     
  }
 
 .myTeam > div{
@@ -74,13 +75,7 @@ form *{
     left: 40px;
 }
 
-table{
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-   width: 299%;
-}
+ 
 
 th{   
     position: relative; 
@@ -91,4 +86,34 @@ th{
     background-color: #f82929;
 }
 
- 
+ span{
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 30px;
+    background-color: #363131;
+    color: azure;
+ }
+
+ td{
+    position: relative; 
+    justify-content: space-around;
+    left: 40%;
+    padding: 40px;
+    color: azure;
+    background-color: #aa9999;
+ }
+
+ .search{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+ }
+
+ .btnAddToTeam{
+    background-color: #2e278e;
+    color: aliceblue;
+    width: 200px;
+    height: 40px;
+ }

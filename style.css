@@ -1,0 +1,75 @@
+body{
+    width: 100%;
+}
+
+.upup{
+    display: flex;
+    background-color: rgb(3, 3, 123);
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 100%;
+    color: aliceblue;
+    font-size: x-large;
+    margin-bottom: 3%;
+}
+
+.updown{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    color: blue;
+    font-weight: 700;
+    top: 50%;
+    font-size: large;
+}
+
+.myTeam{
+    display: flex;
+    justify-content: center;
+     
+ }
+
+.myTeam > div{
+    display: flex;
+    flex-direction: column;
+    color: blue;
+    border-style:solid;
+    border-color: rgb(186, 192, 197);
+    margin: 2%;
+    height:150px;
+    width: 150px;
+    padding: 10px;
+    align-items: center;
+    font-weight: 400;
+    background-color: #b4adad;
+}
+
+.d{
+    position: relative;
+    top: 280px;
+     
+    display: flex;
+    justify-content: center;
+    color: blue;
+    font-weight: 700;
+    font-size: large;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 30%;
+    margin: 6%;
+    left: 390px;
+    justify-content: space-around;
+    background-color: #b4adad;
+    padding: 10px;
+}
+
+form *{
+    position: relative;
+    width: 80%;
+    left: 40px;
+}

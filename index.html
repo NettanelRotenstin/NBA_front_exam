@@ -19,20 +19,27 @@
         <div></div>
         <div></div>
     </div>
-    <div class="updown">NBA Player Search</div>
+    <div  class="d">NBA Player Search</div>
+    <div class="myTeam">
+        <div class="PG">Point Guard</div>
+        <div class="SG">Shooting Guard</div>
+        <div class="SF">Small Forword</div>
+        <div class="PF">Power Forword</div>
+        <div class="C">Center</div>
+    </div>
     <div class="search">
-        <form action=""><label for="fname">First name:</label><br>
-            <select name="position" id="position">
+        <form action=""> 
+            <select name="position" class="position">
                 <option value="pg">PG</option>
                 <option value="sg">SG</option>
                 <option value="sf">SF</option>
                 <option value="pf">PF</option>
                 <option value="c">C</option>
             </select><br>
-            <input type="range" min="0" max="20000" id="points" name="points" value="points"><br>
-            <input type="range" min="0" max="100" id="per2" name="per2" value="per2"><br>
-            <input type="range" min="0" max="100" id="per3" name="per3" value="per3"><br>
-            <input type="submit" value="Submit" placeholder="Search Player">
+            <span class="pRange"></span><input type="range" min="0" max="20000" id="points" name="points" value="0"><br>
+            <span class="TwoRange"></span><input type="range" min="0" max="100" id="per2" name="per2" value="0"><br>
+            <span class="ThreeRange"></span><input type="range" min="0" max="100" id="per3" name="per3" value="0"><br>
+            <input class="submit" type="submit" value="Search Player" title="Search Player">
         </form>
     </div>
     <div class="tablediv">
